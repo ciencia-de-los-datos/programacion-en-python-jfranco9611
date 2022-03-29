@@ -11,6 +11,11 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
+from collections import Counter
+from itertools import groupby
+from operator import itemgetter
+import numpy as np
+        
 global Data
 with open("data.csv", 'r') as D1:
     Data = D1.readlines()
@@ -52,9 +57,7 @@ def pregunta_02():
     ]
 
     """
-    
-    
-    from collections import Counter
+        
 
     t_p2 = []
 
@@ -84,8 +87,7 @@ def pregunta_03():
         ("E", 67),
     ]
     """
-    from itertools import groupby
-    from operator import itemgetter
+
 
     t_p3=[]
 
@@ -354,7 +356,7 @@ def pregunta_08():
         (9, ["A", "B", "C", "E"]),
     ]
     """
-    import numpy as np
+
     xp08 = np.unique(xp0)
     xp18 = np.unique(xp1)
     xp28 = np.unique(xp2)
