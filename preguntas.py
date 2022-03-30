@@ -14,7 +14,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 from collections import Counter
 from itertools import groupby
 from operator import itemgetter
-import numpy as np
         
 global Data
 with open("data.csv", 'r') as D1:
@@ -181,7 +180,8 @@ def pregunta_05():
     Dr5 = "D", int(max(Dt5)[1]), int(min(Dt5)[1])
     Er5 = "E", int(max(Et5)[1]), int(min(Et5)[1])
 
-    Res_p5 = Ar5, Br5, Cr5, Dr5, Er5
+    Res_p5 = [Ar5, Br5, Cr5, Dr5, Er5]
+
     #print(Res_p5)
     return(Res_p5)
 
@@ -245,7 +245,7 @@ def pregunta_06():
     ir1 = "iii", int(min(ix1)[1]), int(max(ix1)[1])
     jr1 = "jjj", int(min(jx1)[1]), int(max(jx1)[1])
 
-    Res_p6 = ar1,br1,cr1,dr1,er1,fr1,gr1,hr1,ir1,jr1
+    Res_p6 = [ar1,br1,cr1,dr1,er1,fr1,gr1,hr1,ir1,jr1]
     #print(Res_p6)
     return(Res_p6)
     
@@ -317,18 +317,18 @@ def pregunta_07():
     mp8= (xp8[4],xp8[2],xp8[3],xp8[0],xp8[1])
     mp9= (xp9[0],xp9[3],xp9[5],xp9[1],xp9[2],xp9[4])
 
-    r0 = int(tp0[0][0]), xp0
-    r1 = int(tp0[0][0]), mp1
-    r2 = int(tp0[0][0]), xp2
-    r3 = int(tp0[0][0]), mp3
-    r4 = int(tp0[0][0]), xp4
-    r5 = int(tp0[0][0]), xp5
-    r6 = int(tp0[0][0]), mp6
-    r7 = int(tp0[0][0]), mp7
-    r8 = int(tp0[0][0]), mp8
-    r9 = int(tp0[0][0]), mp9
+    r0 = int(tp0[0][0]), list(xp0)
+    r1 = int(tp1[0][0]), list(mp1)
+    r2 = int(tp2[0][0]), list(xp2)
+    r3 = int(tp3[0][0]), list(mp3)
+    r4 = int(tp4[0][0]), list(xp4)
+    r5 = int(tp5[0][0]), list(xp5)
+    r6 = int(tp6[0][0]), list(mp6)
+    r7 = int(tp7[0][0]), list(mp7)
+    r8 = int(tp8[0][0]), list(mp8)
+    r9 = int(tp9[0][0]), list(mp9)
 
-    Res_p7 = r0, r1, r2, r3, r4, r5, r6, r7, r8, r9
+    Res_p7 = [r0, r1, r2, r3, r4, r5, r6, r7, r8, r9]
 
     #print(Res_p7)
     return(Res_p7)
@@ -356,17 +356,60 @@ def pregunta_08():
         (9, ["A", "B", "C", "E"]),
     ]
     """
+    t_p7 = []
+    for x7 in Data:
+        a7=x7[1]
+        b7=x7[0]
+        tx7=a7, b7
+        t_p7.append(tx7)
+    t_p7.sort()
 
-    xp08 = np.unique(xp0)
-    xp18 = np.unique(xp1)
-    xp28 = np.unique(xp2)
-    xp38 = np.unique(xp3)
-    xp48 = np.unique(xp4)
-    xp58 = np.unique(xp5)
-    xp68 = np.unique(xp6)
-    xp78 = np.unique(xp7)
-    xp88 = np.unique(xp8)
-    xp98 = np.unique(xp9)
+    tp0 = [x for x in t_p7 if x[0] =="0"]
+    tp1 = [x for x in t_p7 if x[0] =="1"]
+    tp2 = [x for x in t_p7 if x[0] =="2"]
+    tp3 = [x for x in t_p7 if x[0] =="3"]
+    tp4 = [x for x in t_p7 if x[0] =="4"]
+    tp5 = [x for x in t_p7 if x[0] =="5"]
+    tp6 = [x for x in t_p7 if x[0] =="6"]
+    tp7 = [x for x in t_p7 if x[0] =="7"]
+    tp8 = [x for x in t_p7 if x[0] =="8"]
+    tp9 = [x for x in t_p7 if x[0] =="9"]
+
+    def preg7(sequence):
+        py=[]
+        for y7 in sequence:
+            a1=y7[1]
+            py.append(a1)
+        return py
+
+    xp0 = preg7(tp0)
+    xp1 = preg7(tp1)
+    xp2 = preg7(tp2)
+    xp3 = preg7(tp3)
+    xp4 = preg7(tp4)
+    xp5 = preg7(tp5)
+    xp6 = preg7(tp6)
+    xp7 = preg7(tp7)
+    xp8 = preg7(tp8)
+    xp9 = preg7(tp9)
+
+    def unique(list1):
+        unique_list = []
+        for x in list1:
+            if x not in unique_list:
+                unique_list.append(x)
+        return unique_list
+
+    xp08 = unique(xp0)
+    xp18 = unique(xp1)
+    xp28 = unique(xp2)
+    xp38 = unique(xp3)
+    xp48 = unique(xp4)
+    xp58 = unique(xp5)
+    xp68 = unique(xp6)
+    xp78 = unique(xp7)
+    xp88 = unique(xp8)
+    xp98 = unique(xp9)
 
     r0 = int(tp0[0][0]), list(xp08)
     r1 = int(tp1[0][0]), list(xp18)
@@ -379,7 +422,7 @@ def pregunta_08():
     r8 = int(tp8[0][0]), list(xp88)
     r9 = int(tp9[0][0]), list(xp98)
 
-    Res_p8 = r0, r1, r2, r3, r4, r5, r6, r7, r8, r9
+    Res_p8 = [r0, r1, r2, r3, r4, r5, r6, r7, r8, r9]
 
     #print(Res_p8)
     return(Res_p8)
@@ -407,15 +450,24 @@ def pregunta_09():
         "jjj": 18,
     }
     """
+    B_dict = []
+    t_p6 = []
+    for x6 in Data:
+        B_06 = x6[4]
+        B_dict.append(B_06)
+
+    B_dict = [line.split(",") for line in B_dict]
+
     t_p9=[]
     for x1 in B_dict:
         for x2 in x1:
             key=x2[0:3]
             t_p9.append(key)
     t_r9 = Counter(t_p9)
-    Res_p9 = list(t_r9.items())
-    Res_p9.sort()
-
+    R_p9 = list(t_r9.items())
+    R_p9.sort()
+    Res_p9 = dict(R_p9)
+    
     #print(Res_p9)
     return(Res_p9)
     
@@ -437,7 +489,7 @@ def pregunta_10():
         ("E", 3, 3),
     ]
     """
-    Res_p10=[]
+    R_p10=[]
 
     for x10 in Data:
         a10=x10[0]
@@ -446,8 +498,9 @@ def pregunta_10():
         lb10=b10.split(",")
         lc10=c10.split(",")
         t_p10=a10, len(lb10), len(lc10)
-        Res_p10.append(t_p10)
-
+        R_p10.append(t_p10)
+    Res_p10 = list(R_p10)
+    
     #print(Res_p10)
     return(Res_p10)
 
