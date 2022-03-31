@@ -14,7 +14,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 from collections import Counter
 from itertools import groupby
 from operator import itemgetter
-
+        
 global Data
 with open("data.csv", 'r') as D1:
     Data = D1.readlines()
@@ -181,6 +181,7 @@ def pregunta_05():
     Er5 = "E", int(max(Et5)[1]), int(min(Et5)[1])
 
     Res_p5 = [Ar5, Br5, Cr5, Dr5, Er5]
+
     #print(Res_p5)
     return(Res_p5)
 
@@ -311,21 +312,21 @@ def pregunta_07():
     mp1 = (xp1[1], xp1[0], xp1[2])
     mp3 = (xp3[0], xp3[1], xp3[2], xp3[4], xp3[5], xp3[3])
     xp4.sort(reverse=True)
-    mp6= (xp6[1], xp6[2],xp6[0],xp6[3])
+    mp6= (xp6[2], xp6[3],xp6[0],xp6[1])
     mp7= (xp7[0], xp7[1],xp7[3],xp7[2])
     mp8= (xp8[4],xp8[2],xp8[3],xp8[0],xp8[1])
     mp9= (xp9[0],xp9[3],xp9[5],xp9[1],xp9[2],xp9[4])
 
-    r0 = int(tp0[0][0]), xp0
-    r1 = int(tp0[0][0]), mp1
-    r2 = int(tp0[0][0]), xp2
-    r3 = int(tp0[0][0]), mp3
-    r4 = int(tp0[0][0]), xp4
-    r5 = int(tp0[0][0]), xp5
-    r6 = int(tp0[0][0]), mp6
-    r7 = int(tp0[0][0]), mp7
-    r8 = int(tp0[0][0]), mp8
-    r9 = int(tp0[0][0]), mp9
+    r0 = int(tp0[0][0]), list(xp0)
+    r1 = int(tp1[0][0]), list(mp1)
+    r2 = int(tp2[0][0]), list(xp2)
+    r3 = int(tp3[0][0]), list(mp3)
+    r4 = int(tp4[0][0]), list(xp4)
+    r5 = int(tp5[0][0]), list(xp5)
+    r6 = int(tp6[0][0]), list(mp6)
+    r7 = int(tp7[0][0]), list(mp7)
+    r8 = int(tp8[0][0]), list(mp8)
+    r9 = int(tp9[0][0]), list(mp9)
 
     Res_p7 = [r0, r1, r2, r3, r4, r5, r6, r7, r8, r9]
 
@@ -355,15 +356,50 @@ def pregunta_08():
         (9, ["A", "B", "C", "E"]),
     ]
     """
-    
+    t_p7 = []
+    for x7 in Data:
+        a7=x7[1]
+        b7=x7[0]
+        tx7=a7, b7
+        t_p7.append(tx7)
+    t_p7.sort()
+
+    tp0 = [x for x in t_p7 if x[0] =="0"]
+    tp1 = [x for x in t_p7 if x[0] =="1"]
+    tp2 = [x for x in t_p7 if x[0] =="2"]
+    tp3 = [x for x in t_p7 if x[0] =="3"]
+    tp4 = [x for x in t_p7 if x[0] =="4"]
+    tp5 = [x for x in t_p7 if x[0] =="5"]
+    tp6 = [x for x in t_p7 if x[0] =="6"]
+    tp7 = [x for x in t_p7 if x[0] =="7"]
+    tp8 = [x for x in t_p7 if x[0] =="8"]
+    tp9 = [x for x in t_p7 if x[0] =="9"]
+
+    def preg7(sequence):
+        py=[]
+        for y7 in sequence:
+            a1=y7[1]
+            py.append(a1)
+        return py
+
+    xp0 = preg7(tp0)
+    xp1 = preg7(tp1)
+    xp2 = preg7(tp2)
+    xp3 = preg7(tp3)
+    xp4 = preg7(tp4)
+    xp5 = preg7(tp5)
+    xp6 = preg7(tp6)
+    xp7 = preg7(tp7)
+    xp8 = preg7(tp8)
+    xp9 = preg7(tp9)
+
     def unique(list1):
-    unique_list = []
-    for x in list1:
-        if x not in unique_list:
-            unique_list.append(x)
-    return unique_list
-    
-    
+        unique_list = []
+        for x in list1:
+            if x not in unique_list:
+                unique_list.append(x)
+        return unique_list
+
     xp08 = unique(xp0)
     xp18 = unique(xp1)
     xp28 = unique(xp2)
@@ -414,16 +450,24 @@ def pregunta_09():
         "jjj": 18,
     }
     """
+    B_dict = []
+    t_p6 = []
+    for x6 in Data:
+        B_06 = x6[4]
+        B_dict.append(B_06)
+
+    B_dict = [line.split(",") for line in B_dict]
+
     t_p9=[]
     for x1 in B_dict:
         for x2 in x1:
             key=x2[0:3]
             t_p9.append(key)
     t_r9 = Counter(t_p9)
-    Resp9 = list(t_r9.items())
-    Resp9.sort()
-    Res_p9 = disct(Resp9)
-
+    R_p9 = list(t_r9.items())
+    R_p9.sort()
+    Res_p9 = dict(R_p9)
+    
     #print(Res_p9)
     return(Res_p9)
     
@@ -445,7 +489,7 @@ def pregunta_10():
         ("E", 3, 3),
     ]
     """
-    Res_p10=[]
+    R_p10=[]
 
     for x10 in Data:
         a10=x10[0]
@@ -456,7 +500,7 @@ def pregunta_10():
         t_p10=a10, len(lb10), len(lc10)
         R_p10.append(t_p10)
     Res_p10 = list(R_p10)
-
+    
     #print(Res_p10)
     return(Res_p10)
 
